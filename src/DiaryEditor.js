@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-const DiaryEditor = () => {
+const DiaryEditor = ({ onCreate }) => {
   const authorInput = useRef();
   const contentInput = useRef();
 
@@ -30,7 +30,14 @@ const DiaryEditor = () => {
       contentInput.current.focus();
       return;
     }
+    onCreate(state.author, state.content, state.emotion); //Event
     alert("저장 성공");
+    //일기 작성 폼 데이터 초기화
+    setState({
+      author: "",
+      content: "",
+      emotion: 1,
+    });
   };
 
   return (
@@ -38,6 +45,7 @@ const DiaryEditor = () => {
       <h2>오늘의 일기</h2>
       <div>
         <input
+          placeholder="작성자"
           ref={authorInput}
           name="author"
           value={state.author}
@@ -46,6 +54,7 @@ const DiaryEditor = () => {
       </div>
       <div>
         <textarea
+          placeholder="내용"
           ref={contentInput}
           name="content"
           value={state.content}
