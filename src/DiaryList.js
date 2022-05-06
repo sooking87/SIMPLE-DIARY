@@ -1,7 +1,7 @@
 //리스트를 랜더링하는 컴포넌트
 import DiaryItem from "./DiaryItem.js";
 
-const DiaryList = ({ diaryList }) => {
+const DiaryList = ({ diaryList, onRemove, onEdit }) => {
   console.log(diaryList);
   return (
     <div className="DiaryList">
@@ -12,7 +12,12 @@ const DiaryList = ({ diaryList }) => {
           (
             it //dummyList의 하나의 객체가 it로 넘어옴
           ) => (
-            <DiaryItem key={it.id} {...it} />
+            <DiaryItem
+              key={it.id}
+              {...it}
+              onRemove={onRemove}
+              onEdit={onEdit}
+            />
           )
         )}
       </div>
