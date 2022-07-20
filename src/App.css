@@ -2,6 +2,7 @@
   border: 1px solid gray;
   text-align: center;
   padding: 20px;
+  margin-bottom: 20px;
 
 }
 
@@ -60,4 +61,15 @@
   font-weight: bold;
   margin-bottom: 30px;
   margin-top: 30px;
+}
+
+/* 일기 분석 ??*/
+.diaryAnalysis {
+  border: 1px solid gray;
+  text-align: center;
+}
+
+.diaryAnalysis div {
+  font-weight: bold;
+  margin: 5px;
 }

@@ -1,6 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useState, useContext } from "react";
+import React, { useRef, useEffect } from "react";
+import { DiaryDispatchContext } from "./App";
 
-const DiaryEditor = ({ onCreate }) => {
+const DiaryEditor = ({}) => {
+  const { onCreate } = useContext(DiaryDispatchContext);
+  useEffect(() => {
+    console.log("DiaryEditor 랜더");
+  });
+
   const authorInput = useRef();
   const contentInput = useRef();
 
@@ -27,9 +34,11 @@ const DiaryEditor = ({ onCreate }) => {
       contentInput.current.focus();
       return;
     }
-    onCreate(state.author, state.content, state.emotion); //Event
+
+    onCreate(state.author, state.content, state.emotion);
     alert("저장 성공");
-    //일기 작성 폼 데이터 초기화
+
+    // 🌟 일기 작성 폼 데이터 초기화
     setState({
       author: "",
       content: "",
@@ -42,7 +51,6 @@ const DiaryEditor = ({ onCreate }) => {
       <h2>오늘의 일기</h2>
       <div>
         <input
-          placeholder="작성자"
           ref={authorInput}
           name="author"
           value={state.author}
@@ -51,7 +59,6 @@ const DiaryEditor = ({ onCreate }) => {
       </div>
       <div>
         <textarea
-          placeholder="내용"
           ref={contentInput}
           name="content"
           value={state.content}
@@ -80,4 +87,3 @@ const DiaryEditor = ({ onCreate }) => {
 };
 
 export default React.memo(DiaryEditor);
-// css에서 스타일링 할 때, DiaryEditor을 통해서 클래스 이름을 지정
